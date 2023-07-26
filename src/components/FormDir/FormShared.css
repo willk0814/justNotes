@@ -23,12 +23,25 @@
     background-color: lightgray;
     border: 0px;
     font-size: 1.25rem;
+    border-radius: 8px;
 }
 
 .submitButton {
     font-size: 1.25rem;
     width: max-content;
     align-self: center;
+    border-radius: 8px;
+    border: 2px solid #e9c46a;
+    background-color: #264653;
+    color: #e9c46a;
+    cursor: pointer;
+    transition: ease-in-out .25s;
+}
+
+.submitButton:hover {
+    scale: 1.1;
+    background-color: #e9c46a;
+    color: #264653;
 }
 
 .toggleScreenText {

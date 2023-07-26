@@ -8,12 +8,12 @@ import './Body.css'
 
 export default function Page() {
 
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(true)
   const [showRegistration, setShowRegistration] = useState(true)
 
   return (
     <div className='PageContainer'>
-      <h1 className='titleText'>Simple Notes</h1>
+      <h1 className='titleText'>Just Notes</h1>
 
       {!loggedIn && !showRegistration && <Login />}
       {!loggedIn && showRegistration && <Register />}

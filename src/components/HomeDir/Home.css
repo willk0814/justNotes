@@ -1,0 +1,87 @@
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #e9c46a;
+    border-radius: 8px;
+    width: 70%;
+    height: 70%;
+    padding: 10px;
+}
+
+/* Control Bar Syles */
+.controlBarContainer {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.userNotesContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Control Bar Notes Styles */
+.userNote {
+    border: 2px solid #e9c46a;
+    border-radius: 8px;
+    margin-inline-end: 10px;
+    padding-inline: 10px;
+    transition: ease-in-out .25s;
+}
+
+.userNote:hover {
+    scale: 1.1;
+}
+
+.noteSelectText {
+    color: #e9c46a;
+    padding-block: 0px;
+}
+
+.controlButton {
+    padding-inline-end: 10px;
+}
+
+/* Note Editor Style */
+.editorHeader {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.titleInput {
+    background-color: #264653;
+    border: none;
+    color: #e9c46a;
+    font-size: 1.25rem;
+    height: max-content;
+}
+
+.editorDate {
+    font-size: 1.25;
+    color: #e9c46a;
+}
+
+.editorContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+}
+
+.mainEditor {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    resize: none;
+    background-color: #264653;
+    border: 2px solid #e9c46a;
+    border-radius: 8px;
+    color: #e9c46a;
+}
