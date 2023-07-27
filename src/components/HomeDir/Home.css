@@ -31,6 +31,15 @@
     transition: ease-in-out .25s;
 }
 
+.userNote_selected {
+    border: 2px solid #e9c46a;
+    border-radius: 8px;
+    margin-inline-end: 10px;
+    padding-inline: 10px;
+    transition: ease-in-out .25s;
+    scale: 1.1;
+}
+
 .userNote:hover {
     scale: 1.1;
 }

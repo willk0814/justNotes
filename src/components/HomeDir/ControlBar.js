@@ -38,7 +38,7 @@ export default function ControlBar({ notes }) {
       {/* Usable notes container */}
       <div className='userNotesContainer'>
       {notesArray.map((note, index) => (
-          <ControlBarNote key={index} title={note.title} date={note.date} note_id={index} />
+          <ControlBarNote key={index} title={note.title} date={note.date} note_id={index} selected_id={1} />
         ))}
       </div>
 
