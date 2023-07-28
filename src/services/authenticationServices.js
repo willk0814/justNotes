@@ -6,7 +6,6 @@ export async function register(username, password) {
       user: username,
       pass: password,
     };
-    console.log("Making register call with user, pass: ", username, password);
     try {
       const response = await axios.post(
         "http://localhost:3000/api/register",
@@ -26,7 +25,6 @@ export async function login(username, password) {
       user: username,
       pass: password,
     };
-    console.log("Making login in call with user, pass: ", username, password);
     try {
       const response = await axios.post("http://localhost:3000/api/login", data);
       console.log("Response, ", response);

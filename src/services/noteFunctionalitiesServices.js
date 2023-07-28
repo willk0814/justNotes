@@ -1,9 +1,10 @@
 import axios from "axios";
 
 // Create new note
-export async function addNote(userID, date, content) {
+export async function addNote(userID, date, title, content) {
     const data = {
       userID: userID,
+      title: title,
       date: date,
       content: content,
     };

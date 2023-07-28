@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Import created components
 import ControlBar from './ControlBar'
@@ -14,17 +14,60 @@ import { addNote,
 import './Home.css'
 
 export default function Home({ user }) {
-
   // State var to hold the note currently displayed by the editor
-  const [selectedNote, setSelectedNote] = useState({})
+  const [selectedNote, setSelectedNote] = useState({
+    userID: user.userData._id,
+    noteID: 'new_note',
+    title: '',
+    content: '',
+    date: new Date().toLocaleString('en-US', { 
+      timeZone: 'America/New_York', 
+      year: '2-digit', 
+      month: '2-digit', 
+      day: '2-digit', 
+      hour: '2-digit', 
+      minute: '2-digit' })
+  })
 
+  const [userNotes, setUserNotes] = useState([])
+
+  const handleTitleChange = (event) => {
+    setSelectedNote({
+      ...selectedNote,
+      title: event.target.value,
+    });
+  };
+
+  const handleContentChange = (event) => {
+    setSelectedNote({
+      ...selectedNote,
+      content: event.target.value,
+    });
+  };
+
+  const handleSave = async () => {
+    if (selectedNote.noteID == 'new_note'){
+      const response = await addNote(
+        selectedNote.userID,
+        selectedNote.date,
+        selectedNote.title,
+        selectedNote.content)
+      setUserNotes(response)
+    } else {
+
+    }
+    // update the users stored notes
+
+  }
 
   const handleAddNote = () => {
 
   }
 
-  const handleGetNotes = () => {
-    
+  const handleGetNotes = async () => {
+    const response = await getNotes(user.userData._id)
+    console.log(response)
+    setUserNotes(response)
   }
 
   const handleUpdateNote = () => {
@@ -35,44 +78,17 @@ export default function Home({ user }) {
     
   }
 
-  const handleSaveChanges = () => {
-    if (selectedNote == 'newNote'){
-
-    }
-  }
-
-  const date = new Date();
-  const options = {
-    timeZone: 'America/New_York',
-    year: '2-digit',
-    month: '2-digit',
-    day: '2-digit',
-  };
-  const formattedDate = date.toLocaleString('en-US', options);
-  const notes = {
-      note_1: {
-        title: 'Test 1',
-        date: formattedDate,
-        content: "Test 1 content"
-      },
-      note_2: {
-        title: 'Test 2',
-        date: formattedDate,
-        content: "Test 2 content"
-      },
-      note_3: {
-        title: 'Test 3',
-        date: formattedDate,
-        content: "Test 3 content"
-      },
-  }
-  const notesArray = Object.keys(notes).map((noteKey) => notes[noteKey]);
+  useEffect(() => {
+    handleGetNotes()
+  }, [])
 
   return (
     <div className='homeContainer'>
-      <ControlBar notes={notesArray} saveChanges={handleSaveChanges}/>
+      <ControlBar notes={userNotes} handleSave={handleSave}/>
       <NoteEditor 
-        note={notes.note_1}/>
+        note={selectedNote}
+        handleTitleChange={handleTitleChange}
+        handleContentChange={handleContentChange}/>
     </div>
   )
 }

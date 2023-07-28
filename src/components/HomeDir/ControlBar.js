@@ -4,7 +4,7 @@ import { FiSave } from 'react-icons/fi'
 import { FaSignOutAlt } from 'react-icons/fa'
 import ControlBarNote from './ControlBarNote';
 
-export default function ControlBar({ notes }) {
+export default function ControlBar({ notes, handleSave }) {
 
   const date = new Date();
   const options = {
@@ -45,7 +45,7 @@ export default function ControlBar({ notes }) {
       {/* controls container */}
       <div className='controlsContainer'>
         {/* Update Button or save button */}
-        <FiSave color='#e9c46a' size={35} className='controlButton'/>
+        <FiSave color='#e9c46a' size={35} className='controlButton' onClick={handleSave}/>
         <FaSignOutAlt color='#e9c46a' size={35} className='controlButton'/>
       </div>
 

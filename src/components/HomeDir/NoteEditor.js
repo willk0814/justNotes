@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './Home.css'
-export default function NoteEditor({ note }) {
+export default function NoteEditor({ note, 
+  handleTitleChange, 
+  handleContentChange }) {
+
   return (
     <div className='editorContainer'>
         {/* Title and Date Container */}
@@ -10,14 +13,14 @@ export default function NoteEditor({ note }) {
                 type='text'
                 value={note.title}
                 className='titleInput'
-                onChange={(e) => console.log(e.target.value)}/>
+                onChange={(e) => handleTitleChange(e)}/>
             <p className='editorDate'>{note.date}</p>
         </div>
 
         <textarea
             className='mainEditor'
             value={note.content}
-            onChange={(e) => console.log(e.target.value)} />
+            onChange={(e) => handleContentChange(e)} />
     </div>
   )
 }
