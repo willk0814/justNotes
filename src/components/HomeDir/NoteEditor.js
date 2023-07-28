@@ -9,7 +9,8 @@ export default function NoteEditor({ note }) {
             <input 
                 type='text'
                 value={note.title}
-                className='titleInput'/>
+                className='titleInput'
+                onChange={(e) => console.log(e.target.value)}/>
             <p className='editorDate'>{note.date}</p>
         </div>
 
@@ -17,7 +18,6 @@ export default function NoteEditor({ note }) {
             className='mainEditor'
             value={note.content}
             onChange={(e) => console.log(e.target.value)} />
-
     </div>
   )
 }

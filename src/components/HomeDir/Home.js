@@ -1,11 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 
+// Import created components
 import ControlBar from './ControlBar'
 import NoteEditor from './NoteEditor'
 
+// Import note operation functions
+import { addNote, 
+  getNotes, 
+  updateNote, 
+  deleteNote } from '../../services/noteFunctionalitiesServices'
+
+// Import stylesheet
 import './Home.css'
 
-export default function Home() {
+export default function Home({ user }) {
+
+  // State var to hold the note currently displayed by the editor
+  const [selectedNote, setSelectedNote] = useState({})
+
+
+  const handleAddNote = () => {
+
+  }
+
+  const handleGetNotes = () => {
+    
+  }
+
+  const handleUpdateNote = () => {
+    
+  }
+
+  const handleDeleteNote = () => {
+    
+  }
+
+  const handleSaveChanges = () => {
+    if (selectedNote == 'newNote'){
+
+    }
+  }
 
   const date = new Date();
   const options = {
@@ -36,7 +70,7 @@ export default function Home() {
 
   return (
     <div className='homeContainer'>
-      <ControlBar notes={notesArray}/>
+      <ControlBar notes={notesArray} saveChanges={handleSaveChanges}/>
       <NoteEditor 
         note={notes.note_1}/>
     </div>

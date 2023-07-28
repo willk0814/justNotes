@@ -50,7 +50,8 @@
 }
 
 .controlButton {
-    padding-inline-end: 10px;
+    margin-inline-start: 10px;
+    cursor: pointer
 }
 
 /* Note Editor Style */
