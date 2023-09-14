@@ -28,6 +28,7 @@
     border-radius: 8px;
     margin-inline-end: 10px;
     padding-inline: 10px;
+    cursor: pointer;
     transition: ease-in-out .25s;
 }
 
@@ -38,6 +39,8 @@
     padding-inline: 10px;
     transition: ease-in-out .25s;
     scale: 1.1;
+    cursor: pointer;
+    background-color: #e9c46a;
 }
 
 .userNote:hover {
@@ -49,9 +52,44 @@
     padding-block: 0px;
 }
 
+.noteSelectText_selected {
+    color: #264653;
+    padding-block: 0px;
+}
+
+.newNoteIconContainer {
+    /* border: 2px solid #e9c46a; */
+    border-radius: 8px;
+    padding: 2px;
+    height: min-content;
+    align-self: center;
+    cursor: pointer;
+    transition: ease-in-out .25s;
+}
+
+.newNoteIconContainer:hover {
+    scale: 1.1;
+}
+
+.newNoteIconContainer_selected {
+    border: 2px solid #e9c46a;
+    border-radius: 8px;
+    padding: 2px;
+    height: min-content;
+    align-self: center;
+    cursor: pointer;
+    scale: 1.1;
+}
+
 .controlButton {
     margin-inline-start: 10px;
-    cursor: pointer
+    cursor: pointer;
+    color: #e9c46a
+}
+
+.controlButton_disabled {
+    color: lightgray;
+    margin-inline-start: 10px;
 }
 
 /* Note Editor Style */
@@ -65,7 +103,8 @@
 
 .titleInput {
     background-color: #264653;
-    border: none;
+    border: 2px solid #e9c46a;
+    border-radius: 8px;
     color: #e9c46a;
     font-size: 1.25rem;
     height: max-content;

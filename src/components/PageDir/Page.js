@@ -20,16 +20,16 @@ export default function Page() {
   const [notes, setNotes] = useState([])
 
   const handleRegister = async (username, password) => {
-    const response = await register(username, password)
-    setCurrUser(response.user)
-    setNotes(response.user.notes)
+    const userData = await register(username, password)
+    setCurrUser(userData)
+    setNotes(userData.notes)
     setLoggedIn(true)
   }
 
   const handleLogin = async (username, password) => {
-    const response = await login(username, password)
-    setCurrUser(response)
-    setNotes(response.userData.notes)
+    const userData = await login(username, password)
+    setCurrUser(userData)
+    setNotes(userData.notes)
     setLoggedIn(true)
   }
 
@@ -40,7 +40,6 @@ export default function Page() {
       {!loggedIn && !showRegistration && <Login handleLogin={handleLogin}/>}
       {!loggedIn && showRegistration && <Register handleRegister={handleRegister}/>}
       {loggedIn && <Home user = {currUser} />}
-
 
     </div>
   )

@@ -2,35 +2,37 @@ import axios from "axios";
 
 // Register a new user
 export async function register(username, password) {
-    const data = {
-      user: username,
-      pass: password,
-    };
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/register",
-        data
-      );
-      console.log("Response user, ", response.data.user);
-      localStorage.setItem("key", response.data.token);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
+  console.log(`Registering with ${username}, ${password}`)
+  const data = {
+    user: username,
+    pass: password,
+  };
+  try {
+    const response = await axios.post(
+      "http://localhost:3000/api/register",
+      data
+    );
+    localStorage.setItem("key", response.data.token);
+    console.log('Response userData: ', response.data.user)
+    return response.data.user;
+  } catch (error) {
+    console.log(error);
   }
+}
 
 // Login an existing user
 export async function login(username, password) {
-    const data = {
-      user: username,
-      pass: password,
-    };
-    try {
-      const response = await axios.post("http://localhost:3000/api/login", data);
-      console.log("Response, ", response);
-      localStorage.setItem("key", response.data.token);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
+  console.log(`Logging in user with ${username}, ${password}`)
+  const data = {
+    user: username,
+    pass: password,
+  };
+  try {
+    const response = await axios.post("http://localhost:3000/api/login", data);
+    localStorage.setItem("key", response.data.token);
+    console.log('Response userData: ', response.data.userData)
+    return response.data.userData;
+  } catch (error) {
+    console.log(error);
   }
+}
