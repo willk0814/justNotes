@@ -18,8 +18,10 @@
 }
 
 .userNotesContainer {
+    padding: 2px;
     display: flex;
     flex-direction: row;
+    overflow: auto;
 }
 
 /* Control Bar Notes Styles */
@@ -38,14 +40,14 @@
     margin-inline-end: 10px;
     padding-inline: 10px;
     transition: ease-in-out .25s;
-    scale: 1.1;
+    /* scale: 1.1; */
     cursor: pointer;
     background-color: #e9c46a;
 }
 
-.userNote:hover {
-    scale: 1.1;
-}
+/* .userNote:hover {
+    border: 4px solid #e9c46a;
+} */
 
 .noteSelectText {
     color: #e9c46a;

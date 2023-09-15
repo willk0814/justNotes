@@ -19,15 +19,15 @@ export default function ControlBar({
     <div className='controlBarContainer'>
       {/* Usable notes container */}
       <div className='userNotesContainer'>
-      {notes.map((note, index) => (
-          <ControlBarNote 
-            key={index} 
-            title={note.title} 
-            date={note.date} 
-            selected_id={selected_ind}
-            index={index}
-            selectNote={selectNote} />
-        ))}
+        {notes.map((note, index) => (
+            <ControlBarNote 
+              key={index} 
+              title={note.title} 
+              date={note.date} 
+              selected_id={selected_ind}
+              index={index}
+              selectNote={selectNote} />
+          ))}
         <div className='newNoteIconContainer'>
           {/* <BsPenFill
             color='#e9c46a'

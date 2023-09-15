@@ -45,9 +45,22 @@ export default function Home({ user }) {
 
   // Make updates to the content of the note
   const handleContentChange = (event) => {
+    const newEditedContent = event.target.value;
     setSelectedNote({
       ...selectedNote,
-      editedContent: event.target.value,
+      editedContent: newEditedContent,
+    });
+
+    // Update userNotes with the latest editedContent
+    setUserNotes((prevUserNotes) => {
+      const updatedUserNotes = [...prevUserNotes];
+      if (selectedInd !== 'new_note') {
+        updatedUserNotes[selectedInd] = {
+          ...updatedUserNotes[selectedInd],
+          editedContent: newEditedContent,
+        };
+      }
+      return updatedUserNotes;
     });
   };
 
@@ -65,8 +78,13 @@ export default function Home({ user }) {
       setUserNotes(response)
     } else {
     // case where we are creating a new note
-      const response = await updateNote(selectedNote.noteID, selectedNote.editedContent)
-      userNotes[selectedInd] = response
+      const updatedNote = await updateNote(selectedNote.noteID, selectedNote.editedContent)
+      updatedNote.editedContent = updatedNote.content
+
+      const newUserNotes = [...userNotes]
+      newUserNotes[selectedInd] = updatedNote
+      
+      setUserNotes(newUserNotes)
     }
     // update the users stored notes
   }
@@ -90,6 +108,7 @@ export default function Home({ user }) {
         })
       })
     } else {
+      console.log('Notes on note switch: ', userNotes)
       const note = userNotes[index]
       setSelectedNote({
         ...selectedNote,
@@ -98,7 +117,7 @@ export default function Home({ user }) {
         editedContent: note.editedContent,
         date: note.date,
         title: note.title
-    })
+      })
     }
     setSelectedInd(index)
   }
@@ -138,13 +157,10 @@ export default function Home({ user }) {
   // - when a note is added or deleted
   // - when the component is initially rendered
   useEffect(() => {
-    console.log(`Calling useEffect to generate new notes`)
     handleGetNotes()
   }, [])
 
   useEffect(() => {
-    // Assign editsMade based on the following 
-    console.log(selectedNote.content, '||', selectedNote.editedContent)
     if (selectedNote.content === selectedNote.editedContent){
       setEditsMade(false)
     } else {

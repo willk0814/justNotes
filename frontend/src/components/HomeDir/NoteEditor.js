@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import './Home.css'
 export default function NoteEditor({ note, handleTitleChange, handleContentChange }) {
-  console.log(note)
+  console.log('From editor ', note)
   
   return (
     <div className='editorContainer'>
