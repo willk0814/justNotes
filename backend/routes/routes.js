@@ -8,11 +8,12 @@ module.exports = router; // export the router to be used elsewhere
 
 // Register Method
 router.post("/register", async (req, res) => {
-  const { user: username, pass: password } = req.body;
+  const { user: username, pass: password, email: email } = req.body;
   console.log(
     "Register request recieved with, ",
     username,
     password,
+    email,
   );
   console.log("Req.body: ", req.body);
 
@@ -21,13 +22,14 @@ router.post("/register", async (req, res) => {
     const existingUser = await User.findOne({ user: username });
     console.log("Existing user, ", existingUser);
     if (existingUser === null) {
-      console.log("reached");
+      
       //   res.status(400).json({ message: "User already exists" });
       // }
       // hash the password
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = new User({
         user: username,
+        email: email,
         pass: hashedPassword,
         notes: [],
       });
@@ -84,6 +86,7 @@ router.post("/login", async (req, res) => {
 // create a new note
 router.post("/addNote", async (req, res) => {
   try {
+
     const date = req.body.date;
     const title = req.body.title;
     const content = req.body.content;
@@ -105,7 +108,7 @@ router.post("/addNote", async (req, res) => {
     user.notes.push(savedNote._id);
     await user.save();
     const populatedUser = await User.findById(userID).populate("notes");
-    res.status(201).json(populatedUser.notes);
+    res.status(201).json(savedNote);
   } catch (error) {
     res.status(500).json(error.message);
   }
